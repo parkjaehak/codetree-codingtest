@@ -57,6 +57,7 @@ public class Main {
              for(int j = 0; j < N; j++){
                 if(visited[i][j] == true){
                     q.add(new int[]{i, j});
+                    bfsVisited[i][j] = true;
                 }
             }
         }
