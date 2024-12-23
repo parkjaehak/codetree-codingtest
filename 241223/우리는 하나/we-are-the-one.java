@@ -68,7 +68,7 @@ public class Main {
         }
 
 
-        int count = 0;
+        int count = K;
         while(!q.isEmpty()){
             int[] curr = q.poll();
 
