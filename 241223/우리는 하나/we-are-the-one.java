@@ -10,7 +10,6 @@ public class Main {
     static boolean[][] visited;
     static int[]dy = {-1, 0, 1, 0};
     static int[]dx = {0,1,0,-1};
-    static List<int[]> selectedCities = new ArrayList<>();
     
 
     public static void main(String[] args) throws Exception{
@@ -44,9 +43,7 @@ public class Main {
         for(int i = 0; i < N; i++){
              for(int j = 0; j < N; j++){
                 visited[i][j] = true;
-                selectedCities.add(new int[]{i, j});
                 selectCity(count + 1);
-                selectedCities.remove(selectedCities.size() - 1);
                 visited[i][j] = false;
              }
         }
@@ -54,13 +51,16 @@ public class Main {
 
     static int bfs(){
         Queue<int[]> q = new LinkedList<>();
-        boolean[][] visited = new boolean[N][N];
+        boolean[][] bfsVisited = new boolean[N][N];
 
-        // 선택된 모든 도시를 BFS 시작점으로 추가
-        for (int[] city : selectedCities) {
-            q.add(city);
-            visited[city[0]][city[1]] = true;
+        for(int i = 0; i < N; i++){
+             for(int j = 0; j < N; j++){
+                if(visited[i][j] == true){
+                    q.add(new int[]{i, j});
+                }
+            }
         }
+
 
         int count = 0;
         while(!q.isEmpty()){
@@ -70,10 +70,10 @@ public class Main {
                 int ny = curr[0] + dy[i];
                 int nx = curr[1] + dx[i];
 
-                if(ny < 0 || nx < 0 || ny >= N || nx >= N || visited[ny][nx] || array[ny][nx] < U || array[ny][nx] > D){
+                if(ny < 0 || nx < 0 || ny >= N || nx >= N || bfsVisited[ny][nx] || array[ny][nx] < U || array[ny][nx] > D){
                     continue;
                 }
-                visited[ny][nx] = true;
+                bfsVisited[ny][nx] = true;
                 q.add(new int[]{ny,nx});
                 count++;
             }
