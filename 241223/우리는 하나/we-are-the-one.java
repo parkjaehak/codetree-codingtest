@@ -77,7 +77,7 @@ public class Main {
             for(int i = 0; i < 4; i++){
                 int ny = cy + dy[i];
                 int nx = cx + dx[i];
-                int diff = Math.abs(array[ny][nx] - array[cy][cx])
+                int diff = Math.abs(array[ny][nx] - array[cy][cx]);
                 if(ny < 0 || nx < 0 || ny >= N || nx >= N || bfsVisited[ny][nx] || diff < U || diff > D){
                     continue;
                 }
