@@ -10,6 +10,7 @@ public class Main {
     static boolean[][] visited;
     static int[]dy = {-1, 0, 1, 0};
     static int[]dx = {0,1,0,-1};
+    static List<int[]> selectedCities = new ArrayList<>();
     
 
     public static void main(String[] args) throws Exception{
@@ -29,13 +30,13 @@ public class Main {
         }
 
         visited = new boolean[N][N];
-        selectCity(0, 0, 0);
+        selectCity(0);
         System.out.println(MaxCity);
     }
 
-    static void selectCity(int count, int row, int column){
+    static void selectCity(int count){
         if(count == K){
-            int cityCount = bfs(row, column);
+            int cityCount = bfs();
             MaxCity = Math.max(MaxCity, cityCount);
             return;
         }
@@ -43,18 +44,23 @@ public class Main {
         for(int i = 0; i < N; i++){
              for(int j = 0; j < N; j++){
                 visited[i][j] = true;
-                selectCity(count + 1, i, j);
+                selectedCities.add(new int[]{i, j});
+                selectCity(count + 1);
+                selectedCities.remove(selectedCities.size() - 1);
                 visited[i][j] = false;
              }
         }
     }
 
-    static int bfs(int row, int column){
+    static int bfs(){
         Queue<int[]> q = new LinkedList<>();
         boolean[][] visited = new boolean[N][N];
 
-        q.add(new int[]{row, column});
-        visited[row][column] = true;
+        // 선택된 모든 도시를 BFS 시작점으로 추가
+        for (int[] city : selectedCities) {
+            q.add(city);
+            visited[city[0]][city[1]] = true;
+        }
 
         int count = 0;
         while(!q.isEmpty()){
@@ -74,5 +80,4 @@ public class Main {
         }
         return count;
     }
-
 }
