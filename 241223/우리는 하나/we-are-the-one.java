@@ -7,9 +7,9 @@ public class Main {
     static int [][]array;
     static int N, K, U, D;
     static int MaxCity = 0;
-    static boolean[][] visited;
     static int[]dy = {-1, 0, 1, 0};
     static int[]dx = {0,1,0,-1};
+    static List<int[]> selectedCities = new ArrayList<>();
     
 
     public static void main(String[] args) throws Exception{
@@ -28,7 +28,7 @@ public class Main {
              }
         }
 
-        visited = new boolean[N][N];
+        
         selectCity(0, 0, 0);
         System.out.println(MaxCity);
     }
@@ -43,15 +43,15 @@ public class Main {
         for(int i = startRow; i < N; i++){
              if(i==startRow){
                 for(int j = startCol; j < N; j++){
-                    visited[i][j] = true;
+                    selectedCities.add(new int[]{i, j});
                     selectCity(count + 1, i, j+1);
-                    visited[i][j] = false;
+                    selectedCities.remove(selectedCities.size() - 1);
                 }
              }else {
                  for(int j = 0; j < N; j++){
-                    visited[i][j] = true;
+                    selectedCities.add(new int[]{i, j});
                     selectCity(count + 1, i, j+1);
-                    visited[i][j] = false;
+                    selectedCities.remove(selectedCities.size() - 1);
                 }
             }
         }
@@ -61,13 +61,10 @@ public class Main {
         Queue<int[]> q = new LinkedList<>();
         boolean[][] bfsVisited = new boolean[N][N];
 
-        for(int i = 0; i < N; i++){
-             for(int j = 0; j < N; j++){
-                if(visited[i][j] == true){
-                    q.add(new int[]{i, j});
-                    bfsVisited[i][j] = true;
-                }
-            }
+        // 선택된 도시를 초기 방문 처리
+        for (int[] city : selectedCities) {
+            q.add(city);
+            bfsVisited[city[0]][city[1]] = true;
         }
 
 
