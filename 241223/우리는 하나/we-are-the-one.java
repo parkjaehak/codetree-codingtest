@@ -71,12 +71,14 @@ public class Main {
         int count = K;
         while(!q.isEmpty()){
             int[] curr = q.poll();
+            int cy = curr[0];
+            int cx = curr[1];
 
             for(int i = 0; i < 4; i++){
-                int ny = curr[0] + dy[i];
-                int nx = curr[1] + dx[i];
+                int ny = cy + dy[i];
+                int nx = cx + dx[i];
 
-                if(ny < 0 || nx < 0 || ny >= N || nx >= N || bfsVisited[ny][nx] || array[ny][nx] < U || array[ny][nx] > D){
+                if(ny < 0 || nx < 0 || ny >= N || nx >= N || bfsVisited[ny][nx] || Math.abs(array[ny][nx] - array[curr[0]][curr[1]]) < U || Math.abs(array[ny][nx] - array[curr[0]][curr[1]]) > D){
                     continue;
                 }
                 bfsVisited[ny][nx] = true;
