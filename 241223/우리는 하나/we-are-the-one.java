@@ -29,23 +29,31 @@ public class Main {
         }
 
         visited = new boolean[N][N];
-        selectCity(0);
+        selectCity(0, 0, 0);
         System.out.println(MaxCity);
     }
 
-    static void selectCity(int count){
+    static void selectCity(int count, int startRow, int startCol){
         if(count == K){
             int cityCount = bfs();
             MaxCity = Math.max(MaxCity, cityCount);
             return;
         }
 
-        for(int i = 0; i < N; i++){
-             for(int j = 0; j < N; j++){
-                visited[i][j] = true;
-                selectCity(count + 1);
-                visited[i][j] = false;
-             }
+        for(int i = startRow; i < N; i++){
+             if(i==startRow){
+                for(int j = startCol; j < N; j++){
+                    visited[i][j] = true;
+                    selectCity(count + 1, i, j+1);
+                    visited[i][j] = false;
+                }
+             }else {
+                 for(int j = 0; j < N; j++){
+                    visited[i][j] = true;
+                    selectCity(count + 1, i, j+1);
+                    visited[i][j] = false;
+                }
+            }
         }
     }
 
