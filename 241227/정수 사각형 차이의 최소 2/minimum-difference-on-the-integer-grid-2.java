@@ -24,7 +24,7 @@ public class Main {
         //최솟값을 정하고 그 이상의 수의 칸만을 이동
         //이떄 최대 - 최소를 최소화해야한다.
 
-        for(int low = 1; low <= N; low++){
+        for(int low = 1; low <=100; low++){
             int high = solve(low); 
 
             if(high == Integer.MAX_VALUE){
@@ -43,11 +43,10 @@ public class Main {
                 if(array[i][j] < low){ //자정한 최솟값이하는 선택하지 않도록 한다.
                     array[i][j] = Integer.MAX_VALUE; // 최댓값으로 초기화
                 }
+                dp[i][j] = Integer.MAX_VALUE; //dp는 모두 최댓값으로 초기화
             }
         }
-        for(int i = 0; i < N; i++)
-            for(int j = 0; j < N; j++)
-                dp[i][j] = Integer.MAX_VALUE; //dp는 모두 최댓값으로 초기화
+        
 
         dp[0][0] = array[0][0]; //초기값 설정
 
