@@ -45,8 +45,8 @@ public class Main {
                 }
             }
         }
-        for(int i = 0; i < n; i++)
-            for(int j = 0; j < n; j++)
+        for(int i = 0; i < N; i++)
+            for(int j = 0; j < N; j++)
                 dp[i][j] = Integer.MAX_VALUE; //dp는 모두 최댓값으로 초기화
 
         dp[0][0] = array[0][0]; //초기값 설정
