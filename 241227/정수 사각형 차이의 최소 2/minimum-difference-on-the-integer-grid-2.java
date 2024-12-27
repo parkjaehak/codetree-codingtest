@@ -1,66 +1,84 @@
-import java.io.*;
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    static StringTokenizer st;
-    static int[][]array;
-    static int[][]dp;
-    static int N;
-    static int answer = Integer.MAX_VALUE;
-
-    public static void main(String[] args) throws Exception {
-        N = Integer.parseInt(br.readLine());
-
-        array = new int[N][N];
-        for(int i = 0; i < N; i++){
-            st = new StringTokenizer(br.readLine());
-            for(int j = 0; j < N; j++){
-                array[i][j] = Integer.parseInt(st.nextToken());
-            }
-        }
-
-        dp = new int[N][N];
-        //최솟값을 정하고 그 이상의 수의 칸만을 이동
-        //이떄 최대 - 최소를 최소화해야한다.
-
-        for(int low = 1; low <= N; low++){
-            int high = solve(low); 
-
-            if(high == Integer.MAX_VALUE){
-                // 더 이상 이동이 불가능하다
-                continue;
-            }
-            answer = Math.min(answer, high - low);
-        }    
-        System.out.print(answer);
+    public static final int INT_MAX = Integer.MAX_VALUE;
+    public static final int MAX_R = 100;
+    public static final int MAX_N = 100;
+    
+    // 변수 선언
+    public static int n;
+    public static int[][] num = new int[MAX_N][MAX_N];
+    public static int[][] dp = new int[MAX_N][MAX_N];
+    
+    public static int ans = INT_MAX;
+    
+    public static void initialize() {
+        // 전부 INT_MAX로 초기화합니다.
+        for(int i = 0; i < n; i++)
+            for(int j = 0; j < n; j++)
+                dp[i][j] = INT_MAX;
+    
+        // 시작점의 경우 dp[0][0] = num[0][0]으로 초기값을 설정해줍니다
+        dp[0][0] = num[0][0];
+    
+        // 최좌측 열의 초기값을 설정해줍니다.
+        for(int i = 1; i < n; i++)
+            dp[i][0] = Math.max(dp[i - 1][0], num[i][0]);
+    
+        // 최상단 행의 초기값을 설정해줍니다.
+        for(int j = 1; j < n; j++)
+            dp[0][j] = Math.max(dp[0][j - 1], num[0][j]);
+    }
+    
+    public static int solve(int lowerBound) {
+        // lowerBound 미만의 값은 사용할 수 없도록
+        // num값을 변경해줍니다.
+        for(int i = 0; i < n; i++)
+            for(int j = 0; j < n; j++)
+                if(num[i][j] < lowerBound)
+                    num[i][j] = INT_MAX;
+        
+        // DP 초기값 설정
+        initialize();
+    
+        // 탐색하는 위치의 위에 값과 좌측 값 중에 작은 값과
+        // 해당 위치의 숫자 중에 최댓값을 구해줍니다.
+        for(int i = 1; i < n; i++)
+            for(int j = 1; j < n; j++)
+                dp[i][j] = Math.max(
+                    Math.min(dp[i - 1][j], dp[i][j - 1]), 
+                    num[i][j]
+                );
+            
+        return dp[n - 1][n - 1];
     }
 
-    static int solve(int low){
-        //low 미만인 값은 사용할 수 없도록 한다.
-        for(int i = 0; i < N; i++){
-            for(int j = 0; j < N; j++){
-                if(array[i][j] < low){ //자정한 최솟값이하는 선택하지 않도록 한다.
-                    array[i][j] = Integer.MAX_VALUE; // 최댓값으로 초기화
-                }
-                dp[i][j] = Integer.MAX_VALUE; //dp는 모두 최댓값으로 초기화
-            }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        // 입력
+        n = sc.nextInt();
+
+        for(int i = 0; i < n; i++)
+            for(int j = 0; j < n; j++)
+                num[i][j] = sc.nextInt();
+
+        // 최솟값을 lowerBound라고 가정했을 때
+        // lowerBound 이상의 수들만 사용하여 
+        // 이동한다는 조건하에서
+        // 최댓값을 최소로 만드는 DP 문제를 풀어줍니다.
+        for(int lowerBound = 1; lowerBound <= MAX_R; lowerBound++) {
+            int upperBound = solve(lowerBound);
+            
+            // 다 진행했음에도 여전히 INT_MAX라면 
+            // 그러한 이동이 불가능하다는 뜻이므로
+            // 패스합니다.
+            if(upperBound == INT_MAX)
+                continue;
+            
+            // 답을 갱신합니다.
+            ans = Math.min(ans, upperBound - lowerBound);
         }
 
-        dp[0][0] = array[0][0]; //초기값 설정
-
-        for(int i = 1; i < N; i++){
-            dp[i][0] = Math.max(dp[i - 1][0], array[i][0]); //시작점 기준으로 비교하여 열 초기화
-            dp[0][i] = Math.max(dp[0][i - 1], array[0][i]); //행 초기화
-        }
-
-        for(int i = 1; i < N; i++){
-            for(int j = 1; j < N; j++){
-                //위 값과 왼쪽 값 중 작은 값 vs 해당 위의 값 -> 최댓값
-                dp[i][j] = Math.max(Math.min(dp[i-1][j], dp[i][j-1]), array[i][j]);
-            }
-        }
-        return dp[N-1][N-1];
-        //dp[i][j]는 (i, j)에 도달하기 위한 경로에서의 최댓값
+        System.out.print(ans);
     }
 }
