@@ -42,13 +42,12 @@ public class Main {
             for(int j = 0; j < N; j++){
                 if(array[i][j] < low){ //자정한 최솟값이하는 선택하지 않도록 한다.
                     array[i][j] = Integer.MAX_VALUE; // 최댓값으로 초기화
-                    dp[i][j] = Integer.MAX_VALUE;
-                }else{
-                    dp[i][j] = Integer.MAX_VALUE; //dp는 모두 최댓값으로 초기화
                 }
-              
             }
         }
+        for(int i = 0; i < n; i++)
+            for(int j = 0; j < n; j++)
+                dp[i][j] = Integer.MAX_VALUE; //dp는 모두 최댓값으로 초기화
 
         dp[0][0] = array[0][0]; //초기값 설정
 
