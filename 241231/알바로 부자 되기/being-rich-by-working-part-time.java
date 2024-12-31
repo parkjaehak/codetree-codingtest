@@ -21,7 +21,7 @@ public class Main {
         }
 
         // 끝나는 날짜 기준으로 정렬
-        Arrays.sort(jobs, Comparator.comparingInt(job -> job.end));
+        Arrays.sort(infos, Comparator.comparingInt(info -> info.end));
 
 
         // DP 배열 초기화
