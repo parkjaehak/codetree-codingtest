@@ -1,47 +1,42 @@
-import java.io.*;
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    static StringTokenizer st;
-    static int N;
-    static int[]nums;
-    static int[]groupA;
-    static int[]groupB;
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) throws Exception{
-        N = Integer.parseInt(br.readLine());
+        // 입력 받기
+        int n = scanner.nextInt();
+        int[] nums = new int[n];
+        int totalSum = 0;
 
-        nums = new int[N];
-        int total = 0;
-
-        st = new StringTokenizer(br.readLine());
-        for(int i = 0; i < N; i++){
-            nums[i] = Integer.parseInt(st.nextToken());
-            total += nums[i];
+        for (int i = 0; i < n; i++) {
+            nums[i] = scanner.nextInt();
+            totalSum += nums[i];
         }
 
-        //A, B로 나누고 각 그룹의 합의 차이가 최소가 되도록
-        int target = total / 2;
-        boolean[]dp = new boolean[target + 1];
-        dp[0] = true; //i라는 합을 만드는 것이 가능한지 여부
+        // 최소 차이를 계산하여 출력
+        System.out.println(minDifference(nums, totalSum));
+    }
 
-        for(int i = 0; i < nums.length; i++){
-            int curr = nums[i];
-            for(int j = target; j >= curr; j--){
-                if(dp[j - curr]){
-                    //합을 만들 수 있다면
-                    dp[j] = true;
-                }
+    public static int minDifference(int[] nums, int totalSum) {
+        int target = totalSum / 2;
+        boolean[] dp = new boolean[target + 1];
+        dp[0] = true; // 합이 0은 항상 가능
+
+        // DP 업데이트
+        for (int num : nums) {
+            for (int j = target; j >= num; j--) {
+                dp[j] = dp[j] || dp[j - num];
             }
         }
 
-        for(int sumA = target; sumA >= 0; sumA--){
-            if(dp[sumA]){
-                total = Math.abs(total - 2 * sumA);
+        // 가능한 최대 합(sumA) 찾기
+        for (int sumA = target; sumA >= 0; sumA--) {
+            if (dp[sumA]) {
+                return Math.abs(totalSum - 2 * sumA);
             }
         }
 
-        System.out.print(total);
+        return totalSum; // 기본적으로 반환 (여기 도달하지 않음)
     }
 }
