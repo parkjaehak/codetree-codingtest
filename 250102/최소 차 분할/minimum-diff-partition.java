@@ -36,7 +36,7 @@ public class Main {
             }
         }
 
-        for(int sumA = target; sumA > 0; sumA--){
+        for(int sumA = target; sumA >= 0; sumA--){
             if(dp[sumA]){
                 total = Math.abs(total - 2 * sumA);
                 break;
