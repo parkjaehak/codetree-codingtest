@@ -5,44 +5,43 @@ public class Main {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
     static int N;
-    static int[]nums;
-    static int[]groupA;
-    static int[]groupB;
+    static int[] nums;
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
+        // 입력 처리
         N = Integer.parseInt(br.readLine());
-
         nums = new int[N];
         int total = 0;
 
         st = new StringTokenizer(br.readLine());
-        for(int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             nums[i] = Integer.parseInt(st.nextToken());
             total += nums[i];
         }
 
-        //A, B로 나누고 각 그룹의 합의 차이가 최소가 되도록
+        // DP 배열 초기화
         int target = total / 2;
-        boolean[]dp = new boolean[target + 1];
-        dp[0] = true; //i라는 합을 만드는 것이 가능한지 여부
+        boolean[] dp = new boolean[target + 1];
+        dp[0] = true; // 합 0은 항상 만들 수 있음
 
-        for(int i = 0; i < nums.length; i++){
-            int curr = nums[i];
-            for(int j = target; j >= curr; j--){
-                if(dp[j - curr]){
-                    //합을 만들 수 있다면
-                    dp[j] = true;
-                }
+        // DP 계산
+        for (int num : nums) {
+            for (int j = target; j >= num; j--) {
+                dp[j] = dp[j] || dp[j - num];
             }
         }
 
-        for(int sumA = target; sumA >= 0; sumA--){
-            if(dp[sumA]){
-                total = Math.abs(total - 2 * sumA);
+        // 가능한 합 중 최대값 찾기
+        int sumA = 0;
+        for (int i = target; i > 0; i--) {
+            if (dp[i]) {
+                sumA = i;
                 break;
             }
         }
 
-        System.out.print(total);
+        // 최소 차이 계산
+        int result = Math.abs(total - 2 * sumA);
+        System.out.print(result);
     }
 }
