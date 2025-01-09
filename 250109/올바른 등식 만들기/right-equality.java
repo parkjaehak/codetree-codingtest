@@ -10,29 +10,23 @@ public class Main {
         // 입력 받기
         N = sc.nextInt();
         M = sc.nextInt();
-        numbers = new int[N];
+        numbers = new int[N + 1];
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 1; i <= N; i++) {
             numbers[i] = sc.nextInt();
         }
 
+        // DFS 탐색 시작
         count = 0;
-
-        // 첫 번째 숫자를 더하는 경우
-        dfs(1, numbers[0]);
-
-        // 첫 번째 숫자를 빼는 경우
-        if (numbers[0] != 0) { // 첫 번째 숫자가 0이면 중복 탐색 방지
-            dfs(1, -numbers[0]);
-        }
-
+        dfs(1, 0); // 첫 번째 숫자로 시작
+        
         // 가능한 식의 개수 출력
         System.out.println(count);
     }
 
     static void dfs(int idx, int sum) {
         // N개의 숫자를 다 사용했을 때 결과 확인
-        if (idx == N) {
+        if (idx == N + 1) {
             if (sum == M) {
                 count++;
             }
