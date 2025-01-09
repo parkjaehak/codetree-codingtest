@@ -35,4 +35,13 @@ public class Main {
                         dp[i][plus] += dp[i - 1][sum];
                     }
                     if (minus >= 0 && minus <= 40) {
-                       
+                        dp[i][minus] += dp[i - 1][sum];
+                    }
+                }
+            }
+        }
+
+        // 목표 M에 해당하는 경우의 수 출력 (M도 인덱스 변환 필요)
+        System.out.println(dp[N - 1][M + 20]);
+    }
+}
