@@ -22,7 +22,7 @@ public class Main {
 
         // 첫 번째 숫자로 초기화 (인덱스 변환: +20)
         dp[0][numbers[0] + 20] = 1;
-        dp[0][-numbers[0] + 20] += 1; // 음수일 수도 있음
+        dp[0][-numbers[0] + 20] = 1; // 음수일 수도 있음
 
         // DP 진행
         for (int i = 1; i < N; i++) {
