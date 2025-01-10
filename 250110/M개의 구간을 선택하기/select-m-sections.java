@@ -35,7 +35,7 @@ public class Main {
 
         for (int i = 0; i <= N; i++) {
             for (int j = 0; j <= M; j++) {
-                dp[i][j] = -500_000_000;;
+                dp[i][j] = -600_000_000;;
             }
         }
 
