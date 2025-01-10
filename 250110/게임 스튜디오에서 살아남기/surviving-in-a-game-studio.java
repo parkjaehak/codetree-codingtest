@@ -4,7 +4,8 @@ public class Main {
     static int N;
     static Scanner sc = new Scanner(System.in);
     static int [][][]dp;
-    static int MOD = 10^9 + 7;
+    static final int MOD = (int) 1e9 + 7;
+
 
 
     public static void main(String[] args) {
