@@ -45,6 +45,7 @@ public class Main {
         for (int j = 1; j <= M; j++) { // j개의 구간 선택
             for (int i = 1; i <= N; i++) { // i번째까지 고려
                 dp[i][j] = dp[i - 1][j]; // 구간을 선택하지 않는 경우
+                
                 for (int k = 1; k <= i; k++) { // k에서 i까지 구간을 선택
                     if (k >= 2) {
                         dp[i][j] = Math.max(dp[i][j], dp[k - 2][j - 1] + sum[k][i]);
