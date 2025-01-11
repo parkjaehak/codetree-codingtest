@@ -26,7 +26,7 @@ public class Main {
                     dp[i][j] = (dp[i][j] + dp[i-1][j-1])%MOD;
                 }
                 if(j < 9){
-                     dp[i][j] = (dp[i][j] + dp[i-1][j-+1])%MOD;
+                     dp[i][j] = (dp[i][j] + dp[i-1][j+1])%MOD;
                 }
             }
         }
