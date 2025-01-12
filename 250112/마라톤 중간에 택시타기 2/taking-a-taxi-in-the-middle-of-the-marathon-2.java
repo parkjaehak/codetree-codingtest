@@ -18,7 +18,7 @@ public class Main {
         for(int i = 1; i < N - 1; i++){
             int distance = 0;
             int x = points[0][0];
-            int y = points[0][0];
+            int y = points[0][1];
         
 
             for(int j = 1; j < N; j++){
