@@ -30,6 +30,9 @@ public class Main {
         int result = 0;
         for(int i = 123; i <=987; i++){
             //서로 다른 세 자리 수인지 검증
+            if(!isValidNumber(i)){
+                continue;  
+            }
             
             boolean isPossible = true;
             for(int j = 0; j < infos.size(); j++){
@@ -66,6 +69,19 @@ public class Main {
         }
 
         if(first == info[1] && second == info[2]){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    static boolean isValidNumber(int num){
+        String str = String.valueOf(num);
+        char a = str.charAt(0);
+        char b = str.charAt(1);
+        char c = str.charAt(2);
+
+        if(a != b && b != c && a != c && a != '0' && b != '0' && c != '0'){
             return true;
         }else{
             return false;
