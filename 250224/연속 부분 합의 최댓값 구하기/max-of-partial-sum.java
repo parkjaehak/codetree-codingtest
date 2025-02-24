@@ -18,12 +18,11 @@ public class Main {
             sum += nums[i];
             max = Math.max(max, sum);
 
-            // 현재 합이 0보다 작으면 초기화 (음수이면 새로운 시작점 설정)
             if (sum < 0) {
                 sum = 0;
             }
         }
-        
+        System.out.println(max);
        
     }
 }
