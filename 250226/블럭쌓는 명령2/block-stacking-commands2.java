@@ -9,10 +9,8 @@ public class Main {
         int[][] infos = new int[K][2]; // (A, B) 쌍을 저장할 2차원 배열
 
         for (int i = 0; i < K; i++) {
-            int A = sc.nextInt();
-            int B = sc.nextInt();
-            infos[i][0] = A; // 시작 인덱스
-            infos[i][1] = B; // 끝 인덱스
+            infos[i][0] = sc.nextInt();
+            infos[i][1] = sc.nextInt();
         }
 
         int[] array = new int[N + 1]; // N 크기의 배열
@@ -28,7 +26,7 @@ public class Main {
 
         // 최댓값 찾기
         int maxVal = Integer.MIN_VALUE;
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i <= N; i++) {
             if (array[i] > maxVal) {
                 maxVal = array[i];
             }
