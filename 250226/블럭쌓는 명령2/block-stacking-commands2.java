@@ -26,7 +26,7 @@ public class Main {
 
         // 최댓값 찾기
         int maxVal = Integer.MIN_VALUE;
-        for (int i = 0; i <= N; i++) {
+        for (int i = 1; i <= N; i++) {
             if (array[i] > maxVal) {
                 maxVal = array[i];
             }
