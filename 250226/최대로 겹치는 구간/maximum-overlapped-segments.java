@@ -8,8 +8,8 @@ public class Main {
         int[] x2 = new int[n];
 
         for (int i = 0; i < n; i++) {
-            x1[i] = sc.nextInt();
-            x2[i] = sc.nextInt();
+            x1[i] = sc.nextInt() + 100;
+            x2[i] = sc.nextInt() + 100;
         }
 
         // 200 크기의 배열을 생성 (좌표 범위가 0~199 가정)
