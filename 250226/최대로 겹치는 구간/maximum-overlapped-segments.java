@@ -13,7 +13,7 @@ public class Main {
         }
 
         // 200 크기의 배열을 생성 (좌표 범위가 0~199 가정)
-        int[] array = new int[200];
+        int[] array = new int[201];
 
         // 선분이 존재하는 구간을 기록
         for (int i = 0; i < n; i++) {
