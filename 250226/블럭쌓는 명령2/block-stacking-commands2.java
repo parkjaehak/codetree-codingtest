@@ -15,13 +15,13 @@ public class Main {
             infos[i][1] = B; // 끝 인덱스
         }
 
-        int[] array = new int[N]; // N 크기의 배열
+        int[] array = new int[N + 1]; // N 크기의 배열
 
         for (int i = 0; i < K; i++) {
             int start = infos[i][0]; // 시작 인덱스
             int end = infos[i][1];   // 끝 인덱스
 
-            for (int j = start; j <= end; j++) { // 범위 내에서 증가
+            for (int j = start; j <= end; j++) { 
                 array[j] += 1;
             }
         }
@@ -34,7 +34,6 @@ public class Main {
             }
         }
 
-        // 최댓값 출력
         System.out.println(maxVal);
     }
 }
