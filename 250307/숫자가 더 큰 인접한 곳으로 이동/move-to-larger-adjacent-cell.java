@@ -42,14 +42,14 @@ public class Main {
            int ny = cy + dy[i];
            int nx = cx + dx[i];
 
-           if(ny >= n || nx >= n || ny < 0 || nx < 0 ||  grid[cy][cx] >= grid[ny][nx]){
+           if(ny > n || nx > n || ny <= 0 || nx <= 0 ||  grid[cy][cx] >= grid[ny][nx]){
                 continue;
            }
-            if( grid[cy][cx] < grid[ny][nx]){
-                cy = ny;
-                cx = nx;
-                return true;
-            }
+    
+           cy = ny;
+           cx = nx;
+           return true;
+            
         }
         return false;
     }
