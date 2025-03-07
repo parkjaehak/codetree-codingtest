@@ -45,10 +45,11 @@ public class Main {
            if(ny >= n || nx >= n || ny < 0 || nx < 0 ||  grid[cy][cx] >= grid[ny][nx]){
                 continue;
            }
-           cx = nx;
-           cy = ny;
-           return true;
-            
+            if( grid[cy][cx] < grid[ny][nx]){
+                cy = ny;
+                cx = nx;
+                return true;
+            }
         }
         return false;
     }
