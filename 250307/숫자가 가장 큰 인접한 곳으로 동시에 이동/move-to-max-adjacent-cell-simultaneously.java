@@ -52,7 +52,7 @@ public class Main {
         //next count 초기화
        int [][]nextCount = new int[n][n];
            for (int i = 0; i < n; i++) {
-            Arrays.fill(count[i], 0); 
+            Arrays.fill(nextCount[i], 0); 
         }
 
         for(int j = 0; j < m; j++){
