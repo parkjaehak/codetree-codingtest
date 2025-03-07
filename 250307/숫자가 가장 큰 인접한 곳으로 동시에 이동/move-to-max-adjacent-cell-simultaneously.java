@@ -26,9 +26,9 @@ public class Main {
 
         marbles = new int[m][2];
         for (int i = 0; i < m; i++) {
-            marbles[i][0] = sc.nextInt();
-            marbles[i][1] = sc.nextInt();
-            count[marbles[i][0] - 1][marbles[i][1] - 1] = 1;
+            marbles[i][0] = sc.nextInt() - 1;
+            marbles[i][1] = sc.nextInt() - 1;
+            count[marbles[i][0]][marbles[i][1]] = 1;
         }
 
         //t라는 시간동안 구슬이동을 반복한다.
@@ -88,7 +88,7 @@ public class Main {
         //2이상인 값들을 0으로바꾼다.
         for (int i = 0; i < n; i++){
             for (int j = 0; j < n; j++){
-                if(count[i][j] == 2){
+                if(count[i][j] >= 2){
                     count[i][j] = 0;
                 }
             }
