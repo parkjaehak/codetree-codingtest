@@ -48,7 +48,7 @@ public class Main {
     static void process(int num){
         //격자에 해당하는 숫자를 이동시킨다.
         int currY = 0; int currX = 0;
-        int nextY = 0; int nextX = 0;
+        int nextY = -1; int nextX = -1;
 
         //현재 위치 찾기
         for(int i = 0; i < N; i++){
@@ -64,7 +64,7 @@ public class Main {
             }
         }
         //바꿀 위치 찾기
-        int max = 0;
+        int max = -1;
         for(int k = 0; k < 8; k++){
             int ny = currY + dy[k];
             int nx = currX + dx[k];
@@ -82,13 +82,15 @@ public class Main {
         }
     
         //위에 있는 수와 함께 이동한다.
-        move(num, currY, currX, nextY, nextX);
+        if(nextY != -1 || nextX != -1){
+            move(num, currY, currX, nextY, nextX);
+        }
 
     }
 
     static void move(int num, int currY, int currX, int nextY, int nextX){
         ArrayList<Integer> currBlock = blocks[currY][currX];
-
+       // System.out.println(nextY + "," +  nextX);
         //현재 숫자 위에 위치한 숫자를 모두 이동 시키고
         boolean up = false;
         for(int i = 0; i < currBlock.size(); i++){
