@@ -54,13 +54,13 @@ public class Main {
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
                 ArrayList<Integer> curr = blocks[i][j];
-                for(int k : curr){
+             
                     if(curr.contains(num)){
                         //현재 위치를 가장 큰 숫자로 이동시킨다.
                         currY = i;
                         currX = j;
                     }
-                }
+                
             }
         }
         //바꿀 위치 찾기
