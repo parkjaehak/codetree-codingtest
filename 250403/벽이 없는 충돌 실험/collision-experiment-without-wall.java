@@ -27,7 +27,7 @@ public class Main {
 
             for (int i = 0; i < N; i++) {
                 int x = (sc.nextInt() * 2) + 2000; //좌표
-                int y = (sc.nextInt() * ) + 2000;
+                int y = (sc.nextInt() * 2) + 2000;
                 int w = sc.nextInt();
                 char d = sc.next().charAt(0);
                 int num = i + 1;
