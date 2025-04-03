@@ -95,7 +95,8 @@ public class Main {
             }
         }
         //얕은 복사
-        marbles = (ArrayList<Info>) nextMarbles.clone(); //clone 메서드는 ArrayList에 정의되어 있으며 명시적 형변환이 필요하다.
+       marbles = new ArrayList<>(nextMarbles);
+ //clone 메서드는 ArrayList에 정의되어 있으며 명시적 형변환이 필요하다.
         for(int i = 0; i < nextMarbles.size(); i++){
             nextMarbleIndex[nextMarbles.get(i).y][nextMarbles.get(i).x] = -1;
         }
