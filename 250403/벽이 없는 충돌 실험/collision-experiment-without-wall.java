@@ -15,9 +15,12 @@ public class Main {
         
         Scanner sc = new Scanner(System.in);
         T = sc.nextInt();
-        for(int i = 0; i < 4001; i++)
-            for(int j = 0; j < 4001; j++)
+        for(int i = 0; i < 4001; i++){
+            for(int j = 0; j < 4001; j++){
                 nextMarbleIndex[i][j] = -1;
+            }   
+        }
+          
 
         for (int t = 0; t < T; t++) {
             N = sc.nextInt(); //구슬 개수
@@ -95,8 +98,7 @@ public class Main {
             }
         }
         //얕은 복사
-       marbles = new ArrayList<>(nextMarbles);
- //clone 메서드는 ArrayList에 정의되어 있으며 명시적 형변환이 필요하다.
+        marbles = (ArrayList<Info>) nextMarbles.clone(); //clone 메서드는 ArrayList에 정의되어 있으며 명시적 형변환이 필요하다.
         for(int i = 0; i < nextMarbles.size(); i++){
             nextMarbleIndex[nextMarbles.get(i).y][nextMarbles.get(i).x] = -1;
         }
@@ -104,7 +106,7 @@ public class Main {
     }
 
     static Info Collide(Info curr, Info next){
-        if(curr.w > next. w || (curr.w == next.w && curr.num > next.w)){
+        if(curr.w > next. w || (curr.w == next.w && curr.num > next.num)){
             return curr;
         }else{
             return next;
