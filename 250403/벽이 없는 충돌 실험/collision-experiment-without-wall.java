@@ -26,8 +26,8 @@ public class Main {
             int dir;
 
             for (int i = 0; i < N; i++) {
-                int x = sc.nextInt() * 2 + 2000; //좌표
-                int y = sc.nextInt() * 2 + 2000;
+                int x = (sc.nextInt() * 2) + 2000; //좌표
+                int y = (sc.nextInt() * ) + 2000;
                 int w = sc.nextInt();
                 char d = sc.next().charAt(0);
                 int num = i + 1;
@@ -78,12 +78,12 @@ public class Main {
             }
 
             //충돌이 일어나는지 확인한다.
-            int index = nextMarbleIndex[nx][ny];
+            int index = nextMarbleIndex[ny][nx];
 
             if(index == -1){
                 //구슬이 없다
                 nextMarbles.add(next);
-                nextMarbleIndex[nx][ny] = nextMarbles.size() - 1; //구슬의 인덱스는 0부터 시작한다.
+                nextMarbleIndex[ny][nx] = nextMarbles.size() - 1; //구슬의 인덱스는 0부터 시작한다.
             }else{
                 //구슬이 이미 있다면
                 //더 영향력이 높은 것만 남긴다.
@@ -97,7 +97,7 @@ public class Main {
         //얕은 복사
         marbles = (ArrayList<Info>) nextMarbles.clone(); //clone 메서드는 ArrayList에 정의되어 있으며 명시적 형변환이 필요하다.
         for(int i = 0; i < nextMarbles.size(); i++){
-            nextMarbleIndex[nextMarbles.get(i).x][nextMarbles.get(i).y] = -1;
+            nextMarbleIndex[nextMarbles.get(i).y][nextMarbles.get(i).x] = -1;
         }
         nextMarbles = new ArrayList<>();
     }
