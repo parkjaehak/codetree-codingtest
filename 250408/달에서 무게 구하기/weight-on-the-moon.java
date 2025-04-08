@@ -4,6 +4,6 @@ public class Main {
         int a = 13;
         double b = 0.165;
 
-        System.out.print(a + " * " + b + " = " + a*b);
+        System.out.printf("%d * %.6f = %.6f\n", a, b, a * b);
     }
 }
