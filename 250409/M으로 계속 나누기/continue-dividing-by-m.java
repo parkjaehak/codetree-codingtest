@@ -7,13 +7,14 @@ public class Main {
         int M = sc.nextInt();
         
         // Please write your code here.
-        System.out.println(N);
+
         while(true){
+            System.out.println(N);
             N /= M;
             if(N == 0){
                 break;
             }
-            System.out.println(N);
+          
         }
     }
 }
