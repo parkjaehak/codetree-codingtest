@@ -20,7 +20,7 @@ public class Main {
                 if(i < 2){
                     continue;      
                 }
-                for(int j = 2; j <= sqrt; j++){
+                for(int j = 2; j <= Math.sqrt(sqrt); j++){
                 //2부터 해당 수까지 소수인지 판별
                     if(sqrt % j == 0){
                         //나누어 떨어지면 안됨
