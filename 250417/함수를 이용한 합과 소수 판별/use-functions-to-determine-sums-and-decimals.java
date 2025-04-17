@@ -34,11 +34,13 @@ public class Main {
         return true;
     }
 
-    static boolean isEven(int num){
-        //모든 자릿수의 합이 짝수인가?
-        if(((num / 10) + (num % 10)) % 2 == 0){
-                return true;
+    static boolean isEven(int num) {
+        int sum = 0;
+        while (num > 0) {
+            sum += num % 10;  // 마지막 자리 더하기
+            num /= 10;        // 한 자리 줄이기
         }
-        return false;
+        return sum % 2 == 0;  // 합이 짝수면 true
     }
+
 }
