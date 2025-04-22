@@ -15,8 +15,8 @@ public class Main {
 
     static int process(int index){
 
-        if(index == 1){
-            return Math.max(arr[index], arr[0]);
+        if(index == 0){
+            return arr[0];
         }
 
         return Math.max(process(index - 1), arr[index]);
