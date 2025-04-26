@@ -20,20 +20,14 @@ public class Main {
         //1 2, 3 4 ,5 6, 7 8
 
         //위치를 바꿔야 함
-      
-        for(int i = 0; i < n; i += 2){
-            int temp = nums[i];
-            nums[i] = nums[n * 2 - (i + 1) - 1];
-            nums[n * 2 - (i + 1) - 1] = temp;
+         int max = 0;
+        // 양 끝을 묶기
+        for (int i = 0; i < n; i++) {
+            int sum = nums[i] + nums[2 * n - 1 - i];
+            max = Math.max(max, sum);
         }
 
-        int max = 0;
-
-              
-        for(int i = 0; i < n; i += 2){
-           max = Math.max(max, nums[i] + nums[i + 1]);
-        }
-        System.out.print(max);
+        System.out.println(max);
    
     }
 }
