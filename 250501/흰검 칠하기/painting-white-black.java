@@ -1,60 +1,64 @@
 import java.util.*;
-
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
 
-        // 충분히 큰 배열로 인덱스 중앙을 100_000으로 설정
-        int OFFSET = 100_000;
-        int SIZE = 200_001;
-        int[] color = new int[SIZE];      // 0: 미칠, 1: 흰, 2: 검, 3: 회
-        int[] whiteCnt = new int[SIZE];
-        int[] blackCnt = new int[SIZE];
-
-        int pos = OFFSET; // 시작 위치
-
+        int [] array = new int[200001];
+        int [] whiteCnt = new int[200001];
+        int [] blackCnt = new int[200001];
+        int startIdx = 100000;
+     
         for (int i = 0; i < N; i++) {
             int x = sc.nextInt();
             char dir = sc.next().charAt(0);
 
-            if (dir == 'L') {
-                for (int j = 0; j < x; j++) {
-                    // 현재 칸 먼저 처리
-                    if (color[pos] != 3) {
-                        whiteCnt[pos]++;
-                        if (whiteCnt[pos] >= 2 && blackCnt[pos] >= 2) {
-                            color[pos] = 3; // 회색
-                        } else {
-                            color[pos] = 1; // 흰색
-                        }
+
+            //흰색 1, 검은색 2, 회색 3
+            if(dir == 'L'){
+                //현재칸을 포함한다.
+                for(int j = 0; j < x; j++){        
+                    if (array[startIdx] == 3) continue; // 회색이면 무시
+
+                    whiteCnt[startIdx]++;
+                    if (whiteCnt[startIdx] >= 2 && blackCnt[startIdx] >= 2) {
+                        array[startIdx] = 3; // 회색으로 변경
+                    } else {
+                        
+                        array[startIdx] = 1; // 흰색 덧씌우기
                     }
-                    pos -= 1; // 왼쪽으로 이동
+                    startIdx -= 1; // 왼쪽으로 이동
                 }
-                pos += 1; // 마지막 칸에서 한 칸 더 빠졌으므로 복구
-            } else { // dir == 'R'
-                for (int j = 0; j < x; j++) {
-                    if (color[pos] != 3) {
-                        blackCnt[pos]++;
-                        if (whiteCnt[pos] >= 2 && blackCnt[pos] >= 2) {
-                            color[pos] = 3; // 회색
-                        } else {
-                            color[pos] = 2; // 검은색
-                        }
+                startIdx += 1;
+            }else{
+               for(int j = 0; j < x; j++){
+                    if (array[startIdx] == 3) continue; // 회색이면 무시
+                
+                    blackCnt[startIdx]++;
+                    if (whiteCnt[startIdx] >= 2 && blackCnt[startIdx] >= 2) {
+                        array[startIdx] = 3; // 회색
+                    } else {
+                        array[startIdx] = 2; // 검은색 덧씌우기
                     }
-                    pos += 1; // 오른쪽으로 이동
+                    startIdx += 1;
                 }
-                pos -= 1; // 마지막 칸에서 한 칸 더 나갔으므로 복구
+                startIdx -= 1;
             }
+
         }
 
-        int white = 0, black = 0, gray = 0;
-        for (int c : color) {
-            if (c == 1) white++;
-            else if (c == 2) black++;
-            else if (c == 3) gray++;
+        int grey  = 0, black = 0, white = 0;
+        for(int i : array){
+            if(i == 1){
+                white++;
+            }else if(i == 2){
+                black++;
+            }else if(i == 3){
+                grey++;
+            }
+
         }
 
-        System.out.println(white + " " + black + " " + gray);
+        System.out.print(white + " " + black + " " + grey);
     }
 }
