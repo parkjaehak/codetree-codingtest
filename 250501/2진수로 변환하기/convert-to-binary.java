@@ -5,19 +5,19 @@ public class Main {
         int n = sc.nextInt();
         // Please write your code here.
 
-    
-        if (n == 0) {
-            System.out.println(0);
-        } else {
-            toBinary(n);
+        if(n == 0){
+            System.out.print(0);
+        }else{
+            process(n);
         }
 
     }
-    
-    static void toBinary(int n) {
-        if (n == 0) return;
-        toBinary(n / 2);
-        System.out.print(n % 2);
+    static void process(int n){
+        if(n == 0){
+            return;
+        }
+        process(n/2);
+        System.out.print(n%2);
     }
 
 }
