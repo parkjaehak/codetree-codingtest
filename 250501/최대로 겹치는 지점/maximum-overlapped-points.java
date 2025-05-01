@@ -10,7 +10,7 @@ public class Main {
             end[i] = sc.nextInt();
         }
         // Please write your code here.
-        int[] array = new int[100];
+        int[] array = new int[101];
 
          
         for (int i = 0; i < n; i++) {
