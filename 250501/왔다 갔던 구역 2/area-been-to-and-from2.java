@@ -10,19 +10,22 @@ public class Main {
         for (int i = 0; i < N; i++) {
             int x = sc.nextInt();
             char dir = sc.next().charAt(0);
-            // Please write your code here.
+       
             //1000부터 시작한다.
-            int delta  = 0;
+       
             if(dir == 'L'){
-                delta  = -1;
+                for(int j = 0; j < x; j++){
+                    startIdx -= 1;
+                    array[startIdx] += 1;
+                }
             }else{
-               delta  = 1;
+               for(int j = 0; j < x; j++){
+                    array[startIdx] += 1;
+                    startIdx += 1;
+                }
             }
 
-            for(int j = 0; j < x; j++){
-                startIdx += delta;
-                array[startIdx] += 1;
-            }
+           
         }
 
         int count = 0;
