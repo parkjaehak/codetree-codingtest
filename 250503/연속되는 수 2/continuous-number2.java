@@ -10,7 +10,7 @@ public class Main {
         }
         // Please write your code here.
         int cnt = 1;
-        int max = 0;
+        int max = 1;
         for(int i = 1; i < n; i++){
             if (arr[i] == arr[i - 1]) {
                 cnt++;      // 연속 중이면 증가
