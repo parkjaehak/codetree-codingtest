@@ -9,16 +9,18 @@ public class Main {
             arr[i] = sc.nextInt();
         }
         // Please write your code here.
-        int cnt = 0;
+        int cnt = 1;
         int max = 0;
-        for(int i = 0; i < n; i++){
-            if(i == 0 || arr[i] == arr[i - 1]){
-                cnt++;
+        for(int i = 1; i < n; i++){
+            if (arr[i] == arr[i - 1]) {
+                cnt++;      // 연속 중이면 증가
+            } else {
+                cnt = 1;    // 연속이 끊기면 초기화
             }
+
             max = Math.max(cnt, max);
         }
          
-        
         System.out.print(max);
     }
 }
