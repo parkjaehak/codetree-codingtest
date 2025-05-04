@@ -22,9 +22,9 @@ public class Main {
                 move = -1;
             }
 
-            for(int t = 1; t <= time; t++){
+            for(int t = 0; t < time; t++){
                 posA += move;
-                a[timeA++] = posA;
+                a[++timeA] = posA;
             }
         }
 
@@ -40,17 +40,17 @@ public class Main {
                 move = -1;
             }
 
-            for(int t = 1; t <= time; t++){
+            for(int t = 0; t < time; t++){
                 posB += move;
-                b[timeB++] = posB;
+                b[++timeB] = posB;
             }
         }
 
         
         int maxTime = Math.max(timeA, timeB);
-        for(int i = 1; i <= maxTime; i++){
-            if(a[i] == b[i]){
-                System.out.print(i + 1);
+        for(int i = 0; i < maxTime; i++){
+            if(a[i] == b[i] && i != 0){
+                System.out.print(i);
                 return;
             }
         }
