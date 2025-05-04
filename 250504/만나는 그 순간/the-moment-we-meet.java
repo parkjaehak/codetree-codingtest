@@ -48,8 +48,8 @@ public class Main {
 
         
         int maxTime = Math.max(timeA, timeB);
-        for(int i = 0; i < maxTime; i++){
-            if(a[i] == b[i] && i != 0){
+        for(int i = 1; i < maxTime; i++){
+            if(a[i] == b[i]){
                 System.out.print(i);
                 return;
             }
