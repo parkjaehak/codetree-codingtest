@@ -5,8 +5,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int m = sc.nextInt();
-        int [] a = new int[1000];
-        int [] b = new int[1000]; //매초마다의 위치 기록
+        int [] a = new int[1001];
+        int [] b = new int[1001]; //매초마다의 위치 기록
         
         // Please write your code here.
 
