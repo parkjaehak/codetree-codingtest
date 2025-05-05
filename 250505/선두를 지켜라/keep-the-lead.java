@@ -35,19 +35,18 @@ public class Main {
         int count = 0;
         int prevLead = 0; // 0: 같음, 1: A 선두, 2: B 선두
 
-
         for (int i = 1; i <= maxTime; i++) {
             if (a[i] > b[i]) {
                 if (prevLead == 2) {
                     count++;
+                   
                 }
-                prevLead = 1;
+                 prevLead = 1;
             } else if (a[i] < b[i]) {
                 if (prevLead == 1) {
                     count++;
                 }
-            } else { // a[i] == b[i]
-                //prevLead = 0;
+                prevLead = 2;
             }
         }
 
