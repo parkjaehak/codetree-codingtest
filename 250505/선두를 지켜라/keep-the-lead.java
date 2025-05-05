@@ -35,7 +35,7 @@ public class Main {
         int count = 0;
         int prevLead = 0; // 0: 같음, 1: A 선두, 2: B 선두
 
-        for (int i = 1; i < maxTime; i++) {
+        for (int i = 1; i <= maxTime; i++) {
             if (a[i] > b[i]) {
                 if (prevLead != 1) {
                     count++;
