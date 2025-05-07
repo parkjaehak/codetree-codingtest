@@ -10,6 +10,7 @@ public class Main {
         int x = 0, y = 0;
         int time = 0;
 
+        boolean returned = false;
         for(int i = 0; i < commands.length(); i++){
             char c = commands.charAt(i);
             
@@ -23,12 +24,18 @@ public class Main {
                 y += dy[dir];
                 if(x == 0 && y == 0){
                     time++;
+                    returned = true;
                     break;
                 }
             }
             time++;
         }
 
-        System.out.print(time);
+        if(returned){
+             System.out.print(time);
+        }else{
+            System.out.print(-1);
+        }
+       
     }
 }
