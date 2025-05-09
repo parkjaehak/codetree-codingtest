@@ -16,22 +16,27 @@ public class Main {
             }
         }
 
+
         result = 0;
+        if(grid[0][0] == grid[R-1][C-1]){
+            System.out.print(0);
+            return;
+        }
         process(0, 0, 0);
         System.out.print(result);
     }
 
     static void process(int y, int x, int count) {
-        if ((y == R - 2) || (x == C - 2)) {
+        if ((y <= R - 2) && (x <= C - 2)) {
             if (count == 2) {
                 result++;
                 //System.out.println("도착! count = " + count);
+                return;
             }
-            return;
+            
         }
 
-        if (count >= 2) return;  // 두 번 이상 점프하면 무효
-
+     
         char curr = grid[y][x];
 
         for (int dy = 1; y + dy < R - 1; dy++) {
