@@ -1,41 +1,40 @@
 import java.util.Scanner;
 
 public class Main {
-    static int []dy = {-1, 0, 1, 0};
-    static int []dx = {0,1,0,-1};
+    static int[] dy = {-1, 0, 1, 0}; // 상우하좌
+    static int[] dx = {0, 1, 0, -1};
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        int [][] array = new int[n][n];
-        // Please write your code here.
+        int[][] array = new int[n][n];
 
         int x = n / 2, y = n / 2;
         int dir = 1;
-        array[x][y] = 1;
         int step = 1;
+        int count = 1;
+        array[y][x] = count++;
 
-        for(int i = 2; i <= n * n; i++){
-            for(int j = 0; j < step; j++){
-                int ny = y + dy[dir];
-                int nx = x + dx[dir];
-                
+        // count가 n*n에 도달할 때까지 반복
+        while (count <= n * n) {
+            for (int repeat = 0; repeat < 2; repeat++) {
+                for (int j = 0; j < step; j++) {
+                    y += dy[dir];
+                    x += dx[dir];
 
+                    if (y < 0 || x < 0 || y >= n || x >= n) break;
 
+                    array[y][x] = count++;
+                }
+                dir = (dir + 3) % 4; // 시계 반대 방향
             }
-           
-
-
-           
-
-            y = y + dy[dir];
-            x = x + dx[dir];
-            array[y][x] = i;
+            step++;
         }
 
-         for(int i = 0; i < n; i++){
-            for(int j = 0; j < n; j++){
+        // 출력
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
                 System.out.print(array[i][j] + " ");
             }
             System.out.println();
