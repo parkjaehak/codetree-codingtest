@@ -11,18 +11,23 @@ public class Main {
         int [][] array = new int[n][n];
         // Please write your code here.
 
-        int x = n - 1, y = n - 1;
-        int dir = 3;
-        array[n - 1][n - 1] = n * n;
+        int x = n / 2, y = n / 2;
+        int dir = 1;
+        array[x][y] = 1;
+        int step = 1;
 
-        for(int i = n*n - 1; i >= 1; i--){
+        for(int i = 2; i <= n * n; i++){
+            for(int j = 0; j < step; j++){
+                int ny = y + dy[dir];
+                int nx = x + dx[dir];
+                
 
-            int ny = y + dy[dir];
-            int nx = x + dx[dir];
 
-            if(ny < 0 || nx < 0 || ny >= n || nx >= n || array[ny][nx] != 0){
-                dir = (dir + 1) % 4;
             }
+           
+
+
+           
 
             y = y + dy[dir];
             x = x + dx[dir];
