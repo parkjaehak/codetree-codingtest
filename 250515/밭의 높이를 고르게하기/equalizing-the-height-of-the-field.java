@@ -10,17 +10,17 @@ public class Main {
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
-        // Please write your code here.
-        int min = Math.min(n, 10);
+     
+    
 
         int minSum = Integer.MAX_VALUE;
-        for(int i = 0; i < n - t; i++){
+        for(int i = 0; i <= n - t; i++){
             //h높이로
             //t번 이상
        
-            for(int j = i + t; j <= min; j++){
+            for(int j = i + t - 1; j < n; j++){
                 int sum = 0;
-                for(int k = i; k < j; k++){
+                for(int k = i; k <= j; k++){
                     sum += Math.abs(arr[k] - h);
                 }
                 minSum = Math.min(minSum, sum);
