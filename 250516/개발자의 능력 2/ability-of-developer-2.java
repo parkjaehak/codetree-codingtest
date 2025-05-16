@@ -20,7 +20,7 @@ public class Main {
             for(int j = i + 1; j < 6; j++){
                 for(int k = 0; k < 5; k++){
                     for(int l = k + 1; l < 6; l++){
-                        if(k == i || k == j || l == i || k == j){
+                        if(k == i || k == j || l == i || l == j){
                             continue;
                         }
                         int sum1 = ability[i] + ability[j];
