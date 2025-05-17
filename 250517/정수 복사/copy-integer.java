@@ -4,7 +4,7 @@ public class Main {
         int a = 3, b = 4;
 
         // 값 변경
-        a = b;
+        b = a;
 
         // 출력
         System.out.println(a * b);
