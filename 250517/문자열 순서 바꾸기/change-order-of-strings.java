@@ -15,6 +15,7 @@ public class Main {
 
         // 출력
         System.out.println(T);
-        System.out.printf("%.2f\n%.2f", b, c);
+        System.out.println(S);
+    
     }
 }
