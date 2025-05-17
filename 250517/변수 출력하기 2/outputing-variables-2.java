@@ -5,6 +5,6 @@ public class Main {
 	    char b = 'C';
 
         // 출력
-        System.out.print(a + "..." + b);
+        System.out.print(b + "!.....!" + a);
     }
 }
