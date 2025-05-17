@@ -11,6 +11,6 @@ public class Main {
         n = sc.nextDouble();
 
         // 출력
-        System.out.printf("%.2f", a + 1.5);
+        System.out.printf("%.2f", n + 1.5);
     }
 }
