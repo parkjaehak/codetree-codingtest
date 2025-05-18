@@ -1,32 +1,27 @@
 import java.util.Scanner;
 
 public class Main {
-    public static final int MAX_NUM = 1000;
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // 변수 선언:
-        int n;
-        int[] price = new int[MAX_NUM];
-
-        // 입력:
-        n = sc.nextInt();
+        // 2차원 배열을 구현합니다.
+        int[][] arr = new int[10][10];
+        
+        // n을 입력받습니다.
+        int n = sc.nextInt();
+        int num = 1;
+        
+        // 배열의 숫자를 채웁니다.
         for(int i = 0; i < n; i++)
-            price[i] = sc.nextInt();
-
-        // 배열을 앞에서부터 순회하며 사는 시점의 후보를 선택합니다
-        int maxProfit = 0;
-        for(int i = 0; i < n; i++) {
-            // 사는 시점의 다음 해부터 순회하며 파는 시점의 후보를 선택합니다
-            for(int j = i + 1; j < n; j++) {
-                int profit = price[j] - price[i];
+            for(int j = 0; j < n; j++)
+                arr[j][i] = num++;
                 
-                if(profit > maxProfit)
-                    maxProfit = profit;
+        // 채워진 배열을 출력합니다.
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                System.out.print(arr[i][j] + " ");
             }
+            System.out.println();
         }
-
-        System.out.print(maxProfit);
     }
 }
