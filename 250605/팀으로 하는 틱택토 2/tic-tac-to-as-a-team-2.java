@@ -55,7 +55,7 @@ public class Main {
             return;
         }
 
-        if(c1 + c2 == 3 && c1 != 3 && c2 != 3){
+        if(c1 + c2 == 3 && (c1 == 2 || c2 == 2)){
             result++;
         }
       }
