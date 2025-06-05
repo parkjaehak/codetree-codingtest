@@ -17,17 +17,88 @@ public class Main {
         }
 
 
-        //가로 3줄, 세로 3줄 대각선 2줄 만 확인 총 8가지 방향
-        for(int i = 0; i < 3; i++){
-            check(array[i][0], array[i][1], array[i][2]);
-        }
+        for(int i = 1; i <= 9; i++){
+            for(int j = i + 1; j <= 9; j++){
+                boolean win = false;
 
-        for (int j = 0; j < 3; j++) {
-            check(array[0][j], array[1][j], array[2][j]);
-        }
+                int num1 = 0, num2 = 0;
 
-        check(array[0][0], array[1][1], array[2][2]);
-        check(array[0][2], array[1][1], array[2][0]);
+                //가로 3번 탐색
+                for(int k = 0; k < 3; k++){
+                    num1 = 0;
+                    num2 = 0;
+
+                    for(int l = 0; l < 3; l++){
+                        if(array[k][l] == i){
+                            num1++;
+                        }
+                        if(array[k][l] == j){
+                            num2++;
+                        }
+                    }
+
+                    if(num1 + num2 == 3 && num1 >= 1 && num2 >= 1){
+                        win = true;
+                    }
+
+                }
+
+
+                //세로 탐색
+                 for(int k = 0; k < 3; k++){
+                    num1 = 0;
+                    num2 = 0;
+
+                    for(int l = 0; l < 3; l++){
+                        if(array[l][k] == i){
+                            num1++;
+                        }
+                        if(array[l][k] == j){
+                            num2++;
+                        }
+                    }
+
+                    if(num1 + num2 == 3 && num1 >= 1 && num2 >= 1){
+                        win = true;
+                    }
+
+                }
+
+
+                //대각선
+                num1 = 0;
+                num2 = 0;
+                for(int l = 0; l < 3; l++){
+                    if(array[l][l] == i){
+                        num1++;
+                    }
+                    if(array[l][l] == j){
+                        num2++;
+                    }
+                }
+                if(num1 + num2 == 3 && num1 >= 1 && num2 >= 1){
+                        win = true;
+                    }
+
+                num1 = 0;
+                num2 = 0;
+                for(int l = 0; l < 3; l++){
+                    if(array[l][2 - l] == i){
+                        num1++;
+                    }
+                    if(array[l][2 - l] == j){
+                        num2++;
+                    }
+                }
+                if(num1 + num2 == 3 && num1 >= 1 && num2 >= 1){
+                        win = true;
+                    }
+
+                if(win){
+                    result++; //이길 수 있었던 팀의 조합의 수를 구한다, 결국 대각선이든 가로든 단 한번이라도 win이면 한번만 추가한다
+                }
+            }
+        }
 
          System.out.println(result);
 
