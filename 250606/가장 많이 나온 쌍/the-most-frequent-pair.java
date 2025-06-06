@@ -28,7 +28,7 @@ public class Main {
                 }
 
                 int a2 = array[n][0];
-                int b2 = array[m][1];
+                int b2 = array[n][1];
 
                 if((a1 == a2 || a1 == b2) && (b1 == b2 || b1 == a2)){
                     count++;
