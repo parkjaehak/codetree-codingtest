@@ -30,7 +30,7 @@ public class Main {
                 //k를 넘지 않는다면 이제 이 사이에 존재하는 모든 원소를 구한다.
                 int count = 0;
                 for(int l = 0; l < n; l++){
-                    if(maxV >= arr[l] && minV >= arr[l]){
+                    if(maxV >= arr[l] && minV <= arr[l]){
                         //이 사이에 있다면 
                         count++;
                     }
