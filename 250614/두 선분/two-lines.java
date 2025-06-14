@@ -8,7 +8,9 @@ public class Main {
         int x4 = sc.nextInt();
         // Please write your code here.
 
-        if(x2 >= x3){
+
+        //겹치는 경우 
+        if(x2 >= x3 && x4 >= x1){ //97 98
             System.out.print("intersecting");
         }else{
             System.out.print("nonintersecting");
