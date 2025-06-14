@@ -9,11 +9,11 @@ public class Main {
         // Please write your code here.
 
 
-        //겹치는 경우 
-        if(x2 >= x3 && x4 >= x1){ //97 98
-            System.out.print("intersecting");
-        }else{
+        //겹치지 않는 경우 
+        if(x2 < x3 | x4 < x1){ //97 98
             System.out.print("nonintersecting");
+        }else{
+            System.out.print("intersecting");
         }
     }
 }
