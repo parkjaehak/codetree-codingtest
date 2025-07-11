@@ -1,50 +1,41 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
+    public static final int MAX_M = 100;
+    
+    public static int n, p, m;
+    public static char[] c = new char[MAX_M];
+    public static int[] u = new int[MAX_M];
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt(); // 인원 수
-        int M = sc.nextInt(); // 메시지 개수
-        int p = sc.nextInt(); // 확인할 메시지 번호(1-based)
-
-        char[] c = new char[M];
-        int[] u = new int[M];
-
-        for (int i = 0; i < M; i++) {
+        // 입력
+        n = sc.nextInt();
+        m = sc.nextInt();
+        p = sc.nextInt();
+        for(int i = 0; i < m; i++) {
             c[i] = sc.next().charAt(0);
             u[i] = sc.nextInt();
         }
 
-        int[] lastRead = new int[N]; // 각 사람의 마지막 읽은 메시지 번호
+        // 모두 읽은 채팅이라면 읽지 않은 사람은 없습니다.
+        if(u[p - 1] == 0)
+            System.exit(0);
+        
+        // 각 사람에 대해 채팅을 읽었을지 안 읽었을지 판단합니다.
+        for(int i = 0; i < n; i++) {
+            // read : 확실하게 채팅을 읽었으면 true
+            char person = (char)((int)'A' + i);
+            boolean read = false;
 
-    
-        for (int i = 0; i < M; i++) {
-            int senderIdx = c[i] - 'A';
-            lastRead[senderIdx] = i + 1;
-
-            // 읽지 않은 사람 수가 0이면 모두 읽음 처리
-            if (u[i] == 0) {
-                Arrays.fill(lastRead, i + 1);
-            }
-
-            // 연속된 메시지에서 읽지 않은 사람 수가 같고, 송신자가 다르면 이전 송신자도 현재 메시지까지 읽음
-            if (i > 0 && u[i] == u[i - 1] && c[i] != c[i - 1]) {
-                int prevSenderIdx = c[i - 1] - 'A';
-                lastRead[prevSenderIdx] = i + 1;
-            }
-        }
-
-        // p번째 메시지의 읽지 않은 사람 수가 0이면 아무도 출력하지 않음
-        if (u[p - 1] == 0) {
-            return;
-        }
-
-        // p번째 메시지를 읽지 않은 사람 출력
-        for (int i = 0; i < N; i++) {
-            if (lastRead[i] < p) {
-                char name = (char)('A' + i);
-                System.out.print(name + " ");
-            }
+            // 만약 p번 메시지를 읽은 사람 수와 같은 채팅을 기준으로
+            // 한번이라도 채팅을 쳤다면 확실하게 채팅을 읽었습니다.
+            for(int j = 0; j < m; j++)
+                if(u[j] >= u[p - 1] && c[j] == person)
+                    read = true;
+                
+            if(read == false)
+                System.out.print(person + " ");
         }
     }
 }
