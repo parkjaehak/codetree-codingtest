@@ -9,8 +9,7 @@ public class Main {
         for (int i = 0; i < n; i++)
             arr[i] = sc.nextInt();
 
-        int cnt = 0;
-        int i = 0;
+   
 
         int i = 0;        // 현재 탐색 위치
         int count = 0;    // 설치된 와이파이 수
