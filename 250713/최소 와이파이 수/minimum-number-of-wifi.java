@@ -3,15 +3,14 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt(); // 전체 길이
-        int m = sc.nextInt(); // 와이파이 커버 범위
-        sc.nextLine(); // 개행 제거
-        String line = sc.nextLine(); // 0과 1로 이루어진 문자열
+         // 입력
+        n = sc.nextInt();
+        m = sc.nextInt();
+        for (int i = 0; i < n; i++)
+            arr[i] = sc.nextInt();
 
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = line.charAt(i) - '0';
-        }
+        int cnt = 0;
+        int i = 0;
 
         int i = 0;        // 현재 탐색 위치
         int count = 0;    // 설치된 와이파이 수
@@ -19,7 +18,7 @@ public class Main {
         while (i < n) {
             if (arr[i] == 0) {
                 // 사람이 없으면 다음으로 넘어감
-               
+                i++;
                 continue;
             }
 
