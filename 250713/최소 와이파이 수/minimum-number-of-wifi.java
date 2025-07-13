@@ -1,6 +1,10 @@
 import java.util.*;
 
 public class Main {
+      public static final int MAX_N = 100;
+
+    public static int n, m;
+    public static int[] arr = new int[MAX_N];
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
          // 입력
