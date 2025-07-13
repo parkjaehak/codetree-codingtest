@@ -1,36 +1,48 @@
-import java.util.*;
+import java.util.Scanner;
 public class Main {
+    static  int n;
+    static char[]name;
+    static int[]value;
+
+    static int scoreA = 0, scoreB = 0;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        Map<Character, Integer> scores = new HashMap<>();
-        scores.put('A', 0);
-        scores.put('B', 0);
-
-        Set<Character> prevHall = new HashSet<>(Arrays.asList('A', 'B'));
-        int changeCount = 0;
-
+        n = sc.nextInt();
+        name = new char[n];
+        value = new int[n];
+        
         for (int i = 0; i < n; i++) {
-            char c = sc.next().charAt(0);
-            int s = sc.nextInt();
+            name[i] = sc.next().charAt(0);
+            value[i] = sc.nextInt();
+        }
+        // Please write your code here.
+        int answer = 0;
 
-            scores.put(c, scores.get(c) + s); //더한 값으로 변경 
-
-            int maxScore = Math.max(scores.get('A'), scores.get('B'));
-
-            Set<Character> currHall = new HashSet<>();
-
-            //둘중 더 큰 것, 혹은 둘 다 max일때 set에 저장한다.
-            if (scores.get('A') == maxScore) currHall.add('A');
-            if (scores.get('B') == maxScore) currHall.add('B');
-
-            //이전 set와 달라졌을때, 즉 명예의 전당에 올라간 경우에 대해 changeCount를 증가시킨다.
-            if (!currHall.equals(prevHall)) {
-                changeCount++;
-                prevHall = currHall;
+        for(int i = 0; i < n; i++){
+            if(name[i] == 'A'){
+                if(status(scoreA, scoreB) != status(scoreA + value[i], scoreB)){
+                    answer++;
+                }
+                scoreA += value[i];
+            }else{
+                if(status(scoreA, scoreB) != status(scoreA, scoreB + value[i])){
+                    answer++;
+                }
+                scoreB += value[i];
             }
         }
-        System.out.println(changeCount);
+        System.out.print(answer);
 
+    }
+
+    static int status(int score1, int score2){
+        if(score1 > score2){
+            return 1;
+        }else if(score2 > score1){
+            return 2;
+        }else{
+            return 3;
+        }
     }
 }
