@@ -4,8 +4,14 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         // Please write your code here.
-
+        
         int []dp = new int[n];
+
+        if (n == 1) {
+            System.out.print(1);
+            return;
+        }
+        
         dp[0] = 1;
         dp[1] = 1;
 
